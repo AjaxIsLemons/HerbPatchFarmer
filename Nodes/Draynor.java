@@ -20,7 +20,7 @@ public class Draynor extends Node {
 	@Override
 	public boolean activate() {
 
-		return ran;
+		return !ran;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class Draynor extends Node {
 		sleep(2000);
 		Move.moveto("Draynor");
 
-		sleep(2000);
+		sleep(3000);
 		SceneObject Patch = SceneEntities.getNearest(VARS.DRAYNOR_PATCH);
 		Mouse.click(Patch.getCentralPoint(),false);
 		if(Menu.contains("Pick", "Herbs")){
@@ -47,7 +47,6 @@ public class Draynor extends Node {
 			NPC TOOL = NPCs.getNearest(VARS.TOOL_LEPRE_DRAYNOR);
 			TOOL.click(true);
 		}else if(Menu.contains("Clear", "Dead herbs") || Menu.contains("Clear", "Diseased herbs")){
-			sleep(2000);
 			Patch.interact("Clear");
 			sleep(2000);
 			while(Players.getLocal().getAnimation() == 830){
@@ -65,7 +64,7 @@ public class Draynor extends Node {
 		sleep(3000);
 		Inventory.getItem(VARS.AVANTOE_SEED).getWidgetChild().interact("Use");
 		Patch.click(true);
-
+		sleep(2000);
 		ran = true;
 	}
 

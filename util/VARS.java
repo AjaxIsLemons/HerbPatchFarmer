@@ -5,10 +5,10 @@ import org.powerbot.game.api.wrappers.map.TilePath;
 
 public class VARS {
 
-	public static final Tile[] TO_DRAYNOR_TILES = {new Tile(3053,3292,0), new Tile(3052, 3300, 0), new Tile(3054,3306,0), new Tile(3057,3311,0)};
+	public static final Tile[] TO_DRAYNOR_TILES = {new Tile(3052, 3300, 0), new Tile(3054,3306,0), new Tile(3057,3311,0)};
 	public static final Tile[] TO_CATHERBY_TILES = {new Tile(2831,3451,0), new Tile(2827, 3456, 0), new Tile(2819,3458,0), new Tile(2815,3463,0)};
 	public static final Tile[] TO_ARDY_TILES = {new Tile(2637,3364,0), new Tile(2647,3380,0), new Tile(2661,3376,0), new Tile(2669,3375,0)};
-	public static final Tile[] TO_ECTO_TILES = {new Tile(3645, 3534, 0), new Tile(3629, 3536, 0), new Tile(3610, 3535, 0), new Tile(3606, 3531, 0)};
+	public static final Tile[] TO_ECTO_TILES = {new Tile(3645, 3534, 0), new Tile(3629, 3536, 0), new Tile(3620,3535,0), new Tile(3610, 3535, 0), new Tile(3606, 3531, 0)};
 	
 	public static final TilePath TO_DRAYNOR_PATH = new TilePath(TO_DRAYNOR_TILES);
 	public static final TilePath TO_CATHERBY_PATH = new TilePath(TO_CATHERBY_TILES);

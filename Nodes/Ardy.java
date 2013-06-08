@@ -21,7 +21,7 @@ public class Ardy extends Node {
 	@Override
 	public boolean activate() {
 
-		return ran;
+		return !ran;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class Ardy extends Node {
 		Move.moveto("Ardy");
 
 		SceneObject Patch = SceneEntities.getNearest(VARS.ARDY_PATCH);
-		sleep(1000);
+		sleep(3000);
 		Mouse.click(Patch.getCentralPoint(),false);
 		
 		if(Menu.contains("Pick", "Herbs")){

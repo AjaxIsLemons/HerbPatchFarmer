@@ -8,6 +8,7 @@ import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.node.SceneObject;
 
@@ -29,7 +30,13 @@ public class Ecto extends Node {
 		Move.moveto("Ecto");
 		
 		SceneObject Patch = SceneEntities.getNearest(VARS.ECTO_PATCH);
-		sleep(1000);
+		sleep(3000);
+		int x = 10;
+		while(!Patch.isOnScreen()){
+			Camera.setAngle(x);
+			x++;
+			
+		}
 		Mouse.click(Patch.getCentralPoint(),false);
 		if(Menu.contains("Pick", "Herbs")){
 			sleep(2000);

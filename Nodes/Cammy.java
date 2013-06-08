@@ -20,7 +20,7 @@ public class Cammy extends Node {
 	@Override
 	public boolean activate() {
 
-		return ran;
+		return !ran;
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class Cammy extends Node {
 		Move.moveto("Cammy");
 
 		SceneObject Patch = SceneEntities.getNearest(VARS.CATHERBY_PATCH);
-		sleep(1000);
+		sleep(3000);
 		Mouse.click(Patch.getCentralPoint(), false);
 		
 		if(Menu.contains("Pick", "Herbs")){
@@ -49,7 +49,7 @@ public class Cammy extends Node {
 			NPC TOOL = NPCs.getNearest(VARS.TOOL_LEPRE_CATHERBY_ARDY);
 			TOOL.click(true);
 		}else if(Menu.contains("Clear", "Dead herbs") || Menu.contains("Clear", "Diseased herbs")){
-			sleep(2000);
+			
 			Patch.interact("Clear");
 			sleep(2000);
 			while(Players.getLocal().getAnimation() == 830){
@@ -67,9 +67,6 @@ public class Cammy extends Node {
 		Inventory.getItem(VARS.AVANTOE_SEED).getWidgetChild().interact("Use");
 		Patch.click(true);
 		sleep(5000);
-		Inventory.getItem(VARS.HERB).getWidgetChild().interact("Use");
-		NPC TOOL = NPCs.getNearest(VARS.TOOL_LEPRE_CATHERBY_ARDY);
-		TOOL.click(true);
 		ran = true;
 	}
 
