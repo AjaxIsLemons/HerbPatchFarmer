@@ -25,30 +25,43 @@ public class Ecto extends Node {
 
 	@Override
 	public void execute() {
+		VARS.Status = "Teleportinggg";
 		Inventory.getItem(VARS.ECTOPHIAL).getWidgetChild().interact("Empty");
 		sleep(10000);
+		VARS.Status = "Walking to the patch";
 		Move.moveto("Ecto");
 		
 		SceneObject Patch = SceneEntities.getNearest(VARS.ECTO_PATCH);
 		sleep(3000);
 		int x = 10;
 		while(!Patch.isOnScreen()){
+			VARS.Status = "Looking for patch";
 			Camera.setAngle(x);
 			x++;
 			
 		}
 		Mouse.click(Patch.getCentralPoint(),false);
+		VARS.Status = "Thinking...";
 		if(Menu.contains("Pick", "Herbs")){
-			sleep(2000);
+			VARS.Status = "Picking Herbs";
 			Patch.interact("Pick");
 			sleep(5000);
 			while(Players.getLocal().getAnimation() == 2282){
 				sleep(1000);			
 			}
+			VARS.Status = "Getting them bank notes";
 			Inventory.getItem(VARS.HERB).getWidgetChild().interact("Use");
 			NPC TOOL = NPCs.getNearest(VARS.TOOL_LEPRE_ECTO);
+			x = 10;
+			while(!TOOL.isOnScreen()){
+				VARS.Status = "Seaching for the wee man";
+				Camera.setAngle(x);
+				x++;
+				
+			}
 			TOOL.click(true);
 		}else if(Menu.contains("Clear", "Dead herbs") || Menu.contains("Clear", "Diseased herbs")){
+			VARS.Status = "Clearing herbs";
 			sleep(2000);
 			Patch.interact("Clear");
 			sleep(2000);
@@ -60,6 +73,7 @@ public class Ecto extends Node {
 			ran = true;
 			return;
 		}
+		VARS.Status = "REPLANT";
 		Inventory.getItem(VARS.SUPER_COMPOST).getWidgetChild().interact("Use");
 		Patch.click(true);
 		sleep(3000);

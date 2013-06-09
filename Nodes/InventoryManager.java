@@ -18,7 +18,7 @@ import org.powerbot.game.api.util.Timer;
 
 public class InventoryManager extends LoopTask {
 	
-	private final InventoryItem[] AllItems;
+	private InventoryItem[] AllItems;
 	private final Timer RunTime = new Timer(0);
 	
 	private int totalCollected = 0;
@@ -77,6 +77,13 @@ public class InventoryManager extends LoopTask {
 		for (int i = 0; i < itemIds.length; i++) {
 			AllItems[i] = new InventoryItem(itemIds[i]);
 		}	
+	}
+	
+	public void change(final int... itemIds){
+		AllItems = new InventoryItem[itemIds.length];
+		for (int i = 0; i < itemIds.length; i++) {
+			AllItems[i] = new InventoryItem(itemIds[i]);
+		}
 	}
 	
 	@Override
