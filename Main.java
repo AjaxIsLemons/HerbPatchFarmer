@@ -15,10 +15,10 @@ import util.VARS;
 
 import Nodes.*;
 
-@Manifest(name = "Quick Farm Runner", authors = "Ajax", description = "Farms herbs at the 4 main patches")
+@Manifest(name = "Quick Farm Runner V-1.0", authors = "Ajax", description = "Farms herbs at the 4 main patches")
 public class Main extends ActiveScript implements PaintListener {
 	private boolean start = false;
-	private static final Node[] jobs = {new Draynor(), new Cammy(), new Ardy(), new Ecto()};
+	private static final Node[] jobs = {new Draynor(), new Cammy(), new Ardy(), new Ecto(), new Finish()};
 	@Override
 	public void onStart() {
 		String herb;
@@ -58,6 +58,7 @@ public class Main extends ActiveScript implements PaintListener {
 	private static final Timer runTime = new Timer(0);
 	@Override
 	public void onStop() {
+		System.exit(0);
 		shutdown();
 	}
 

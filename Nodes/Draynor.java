@@ -10,6 +10,7 @@ import org.powerbot.game.api.methods.node.Menu;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Camera;
+import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.node.SceneObject;
 
@@ -41,15 +42,14 @@ public class Draynor extends Node {
 		int x = 10;
 		
 		SceneObject Patch = SceneEntities.getNearest(VARS.DRAYNOR_PATCH);
-		while(!Patch.isOnScreen()){
-			VARS.Status = "Looking for Patch";
-			Camera.setAngle(x);
-			x++;
+		if(!Patch.isOnScreen()){
+			Walking.walk(new Tile(3057,3311,0));
 			
 		}
 		
 		Mouse.click(Patch.getCentralPoint(),false);
 		VARS.Status = "Thinking...";
+		sleep(1500);
 		if(Menu.contains("Pick", "Herbs")){
 			Patch.interact("Pick");
 			VARS.Status = "Picking";
@@ -75,14 +75,24 @@ public class Draynor extends Node {
 			while(Players.getLocal().getAnimation() == 830){
 				sleep(2000);
 			}
+		}else if(Menu.contains("Rake", "Herb patch")){
+			Patch.interact("Rake");
+			sleep(2000);
+			while(Players.getLocal().getAnimation() == 2273){
+				sleep(1000);
+			}
 		}else{
-			Patch.interact("Inspect");
 			ran = true;
 			return;
+		}
+		if(!Patch.isOnScreen()){
+			Walking.walk(new Tile(3057,3311,0));
+			
 		}
 		sleep(2000);
 		
 		VARS.Status = "Replanting";
+		Camera.setPitch(80);
 		Inventory.getItem(VARS.SUPER_COMPOST).getWidgetChild().interact("Use");
 		Patch.click(true);
 		sleep(3000);
