@@ -22,7 +22,7 @@ public class Draynor extends Node {
 	@Override
 	public boolean activate() {
 
-		return !ran;
+		return !ran && Inventory.contains(VARS.EXPLORER_RING);
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class Ecto extends Node {
 	@Override
 	public boolean activate() {
 		
-		return !ran;
+		return !ran && Inventory.contains(VARS.ECTOPHIAL);
 	}
 
 	@Override
